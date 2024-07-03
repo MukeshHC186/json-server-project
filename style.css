@@ -1,0 +1,48 @@
+body {
+    padding-top: 56px; /* Navbar height */
+  }
+  h1{
+    text-align: center;
+    background: #000;
+    color: white;
+  }
+  .form-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    color: white;
+    background-color: #96a0aa;
+  }
+  #display{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+    
+  }
+  #display div{
+    border: 1px solid #161515;
+    border-radius: 20px 40px;
+    text-align: center;
+    overflow: hidden;
+  }
+  #display div img{
+    width: 100%;
+    border-radius: 20px 40px;
+    transition: all 1s ease-in-out;
+  }
+  #display div img:hover{
+    transform: scale(1.1);
+  }
+  #edit,#del{
+    border: none;
+    padding: 5px 10px;
+    width: 20%;
+    background-color: rgb(1,123,255);
+    color: white;
+    border-radius: 10px;
+  }
+  #del{
+    margin-left: 5px;
+  }
