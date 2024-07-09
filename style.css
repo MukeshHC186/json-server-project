@@ -19,13 +19,13 @@ body {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 15px;
-    
   }
   #display div{
     border: 1px solid #161515;
     border-radius: 20px 40px;
     text-align: center;
     overflow: hidden;
+    padding: 5px;
   }
   #display div img{
     width: 100%;
