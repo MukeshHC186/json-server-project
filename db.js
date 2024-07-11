@@ -1,4 +1,5 @@
 //------------post data on server-----------------
+let form=document.getElementById("form")
 let image = document.getElementById("image");
 let name = document.getElementById("name");
 let email = document.getElementById("email");
@@ -7,15 +8,19 @@ let display = document.getElementById("display");
 let arr = [];
 let state = false;
 let currentId = null;
-async function postData() {
+async function postData(e) {
+  e.preventDefault();
   let obj = {
-    image: document.getElementById("image").value,
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
+    image:image.value,
+    name: name.value,
+    email:email.value,
   };
   try {
-    let res = await axios.post("http://localhost:8080/user", obj);
+    let res = await axios.post("https://json-live-server-new-project.onrender.com/cards", obj);
     alert("Submitted");
+    // console.log(res.data);
+    form.reset()
+    getData()
   } catch (error) {
     console.log(error);
   }
@@ -25,10 +30,10 @@ btn.addEventListener("click", postData);
 //----------------get data from server-------------
 async function getData() {
   try {
-    let res = await axios.get("http://localhost:8080/user");
+    let res = await axios.get("https://json-live-server-new-project.onrender.com/cards");
     arr = res.data;
     displayData(arr);
-    console.log(arr);
+    // console.log(`get data ${arr}`);
   } catch (error) {
     console.log(error);
   }
@@ -36,8 +41,10 @@ async function getData() {
 getData();
 
 //-------------display data------------------------
-async function displayData(data) {
-  data.map((ele) => {
+async function displayData() {
+  
+  display.innerHTML=""
+  arr.map((ele) => {
     let div = document.createElement("div");
     let image = document.createElement("img");
     image.src = ele.image;
@@ -61,15 +68,15 @@ async function displayData(data) {
     display.append(div);
   });
 }
-displayData(arr);
+// displayData(arr);
 
 //-------------Edit-------------------
 async function getDataforEdit(data) {
   
   newobj = {
-    image: (document.getElementById("image").value = data.image),
-    name: (document.getElementById("name").value = data.name),
-    email: (document.getElementById("email").value = data.email),
+    image:image.src=data.src,
+    name: data.value=name.value,
+    email:data.value=email.value,
   };
   // console.log(newobj);
   state = true;
